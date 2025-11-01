@@ -1,6 +1,6 @@
 #include <iostream>
 #include "ekf.h"
-#include <Eigen/Eigen>
+#include "Eigen/Eigen"
 #include <vector>
 #include <fstream>
 #include <sstream>
@@ -53,11 +53,11 @@ int main()
     std::vector<std::string> k_fsm;
     for (int i = 0; i < altitudes.size(); i += 50)
     {
-        if(times[i] <= 2523800){
-            // ekf.initialize();
-            // std::cout<<"ran"<<std::endl;
-            continue;
-        }
+        // if(times[i] <= 2523800){
+        //     // ekf.initialize();
+        //     // std::cout<<"ran"<<std::endl;
+        //     continue;
+        // }
         FSMState actual = stringToFSMState(FSM[i]);
         ekf.tick(0.05f, 0.001f, altitudes[i], accelerations[i], orientations[i], actual);
         KalmanState val = ekf.getState();
@@ -74,6 +74,8 @@ int main()
         k_acc_z.push_back(val.state_est_accel_z);
         k_fsm.push_back(FSM[i]);
     }
+
+    std::cout <<k_pos_x.size()<<std::endl;
 
    write_kalman_csv("./data_files/kalman_output.csv",
                  k_times, k_alts,
@@ -151,6 +153,7 @@ void store_data(std::vector<Eigen::Matrix<float, 3, 1>> &accelerations,
         altitudes.push_back(altitude);
         times.push_back(time);
         FSM.push_back(fsm_state);
+        // std::cout << fsm_state<<std÷÷:endl;
     }
 
     file.close();
@@ -216,6 +219,7 @@ void write_kalman_csv(const std::string &filename,
     // Write each row
     for (size_t i = 0; i < k_pos_x.size(); ++i)
     {
+        std::cout << i <<std::endl;
         outfile << times[i] << ","
                 << altitudes[i] << ","
                 << k_pos_x[i] << "," << k_pos_y[i] << "," << k_pos_z[i] << ","

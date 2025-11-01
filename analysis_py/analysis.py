@@ -31,7 +31,7 @@ def analyze_and_plot(file_path):
     plt.figure()
     a = 100600
     plt.plot(
-        (data["time"])/1000- 2523.810, (data["pos_x"]), label="Kalman Position X"
+        (data["time"])/1000- 2303.840, (data["pos_x"]), label="Kalman Position X"
     )
     # plt.plot(
     #     (data["timestamp"])[:a]/1000- 2303.845, (data["kalman.velocity.vx"])[:a], label="Kalman Velocity X"

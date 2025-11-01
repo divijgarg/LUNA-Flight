@@ -28,7 +28,8 @@
  *  - MatrixBase::operatorNorm()
  *
  * \code
- * #include <Eigen/Eigenvalues>
+ * #include <
+ *values>
  * \endcode
  */
 

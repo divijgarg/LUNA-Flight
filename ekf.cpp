@@ -1,6 +1,6 @@
 #include "ekf.h"
 #include "finite-state-machines/fsm_states.h"
-
+#include <algorithm>
 extern const std::map<float, float> O5500X_data;
 extern const std::map<float, float> M685W_data;
 extern const std::map<std::string, std::map<float, float>> motor_data;
